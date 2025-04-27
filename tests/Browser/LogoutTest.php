@@ -6,24 +6,25 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class LoginTest extends DuskTestCase
+class LogoutTest extends DuskTestCase
 {
     /**
      * A Dusk test example.
      */
-    public function testUserCanLogin(): void
+    public function testUserCanLogout(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                    ->assertSee('Modul 3')
                     ->clickLink('Log in')
-                    ->assertPathIs('/login')
                     ->type('email', 'jihanrizkyta@gmail.com')
                     ->type('password', 'jihanrizkyta')
                     ->press('LOG IN')
                     ->assertPathIs('/dashboard')
-                    ->assertSee('You\'re logged in!');
-
+                    ->click('jihan rizkyta fitri') 
+                    ->clickLink('Log Out')
+                    ->assertPathIs('/')
+                    ->assertSee('Log in')
+                    ->assertSee('Register');
         });
     }
 }

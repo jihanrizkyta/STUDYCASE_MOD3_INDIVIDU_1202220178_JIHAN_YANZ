@@ -11,7 +11,7 @@ class RegisterTest extends DuskTestCase
     /**
      * A Dusk test example.
      */
-    public function testExample(): void
+    public function testUserCanRegister(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
@@ -23,7 +23,8 @@ class RegisterTest extends DuskTestCase
                     ->type('password', 'jihanrizkyta')
                     ->type('confirm_password', 'jihanrizkyta')
                     ->press('REGISTER')
-                    ->assertPathIs('/dashboard');
+                    ->assertPathIs('/dashboard')
+                    ->assertSee('You\'re logged in!');
 
         });
     }
